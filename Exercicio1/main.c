@@ -1,11 +1,14 @@
-#include<stdio.h>
+#include <stdio.h>
 
-main()
+main(int argc, char *argv[])
 {
-  int n = 104395301;
+  int n, i, count = 0;
+  n = atoi(argv[1]);
 
-  if (primo(n))
-    printf("%d é primo.\n", n);
-  else
-    printf("%d não é primo.\n", n);
+  for (i = 2; i <= n; ++i){
+  	if(primo(i)){
+  		count++;
+  	}
+  }
+  printf("%d\n", count);
 }
