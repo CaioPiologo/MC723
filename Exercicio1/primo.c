@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int primo(int n)
-{
+int primo(int n){
   int i;
 
   for(i = 2; i < n; i ++)
@@ -11,12 +10,14 @@ int primo(int n)
   return 1;
 }
 
-main()
-{
-  int n = 104395301;
+main(int argc, char *argv[]){
+  int n, i, count = 0;
+  n = atoi(argv[1]);
 
-  if (primo(n))
-    printf("%d é primo.\n", n);
-  else
-    printf("%d não é primo.\n", n);
+  for (i = 2; i <= n; ++i){
+    if(primo(i)){
+      count++;
+    }
+  }
+  printf("%d\n", count);
 }
