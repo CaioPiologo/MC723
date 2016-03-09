@@ -13,7 +13,7 @@ main(int argc, char *argv[])
 {
 
 	#pragma omp for reduction(+:count)
-		for (i=2; i < n; i++){
+		for (i=2; i <= n; i++){
 			if(primo(i)){
 				count++;
 			}
