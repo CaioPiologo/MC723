@@ -16,7 +16,7 @@ Em cada etapa o perf gerou um log com os dados retirados. Dentre eles foram cons
   - Instruções (número de instruções realizadas por ciclo)
 
 O algoritmo foi executado em um número total de 9 computadores diferentes:
-  1. ~~yk0 - Yugo Kuno : AMD PhenonII, 4 cores, 3.2MHz; 10GB, ddr3, 1.333 MHz; hdd sata3, 7200rpm, 32MB buffer~~ Dados retirados incorretamente
+  1. ~~yk0 - Yugo Kuno : AMD PhenonII, 4 cores, 3.2MHz; 10GB, ddr3, 1.333 MHz; hdd sata3, 7200rpm, 32MB buffer~~ -Dados retirados incorretamente
   2. Cygnus X-1: Intel® Core™ i7 × 4;  Memory 8 GiB;  
   3. IC-legiao: Intel® Core™2 Quad CPU Q8400 @ 2.66GHz × 4 Intel® Q45/Q43 
   4. Gabriel Magalhães: Intel® Core™ i7-3612QM CPU @ 2.10GHz × 8; Memory 8GB, SSD Kingston 240GB V300 Sata III;  Ubuntu 15.04 
@@ -60,4 +60,23 @@ A seguir serão ordenados os nove computadores em relação aos dados gerados pa
 7. Wendrey - 1: 2,630; 2: 2,547; 3: 2,610; 4: 2,576
 8. Netbook - Felipe Emos - 1: 1,652; 2: 1,653; 3: 1,653; 4: 1,652
 
+###### Instruções (IPC)
 
+1. Titouan Thibaud - 1: 1.37; 2: 2.11; 3: 1.98; 4: 1.71
+2. Cygnus X-1 - 1: 1.28; 2: 0.89; 3: 1.67; 4: 0.96
+3. Gabriel Magalhães - 1: 1,22; 2: 1,34; 3: 1.29; 4: 1,23
+4. Wendrey - 1: 1,37; 2: 1,07; 3: 1,91; 4: 1,08
+5. IC-legiao - 1: 1.22; 2: 1.28; 3: 1.04; 4: 1.12
+6. IC-sepultura - 1: 1.23; 2: 1.38; 3: 1.03; 4: 1.15
+7. IC301-Titan - 1: 1.21; 2: 1.13; 3: 1.03; 4: 1.11
+8. Netbook - Felipe Emos - 1: 0,63; 2: 0,40; 3: 0,53; 4: 0,37
+
+## Conclusões
+
+Todos os dados retirados inferem de alguma forma no tempo de execução dos programas rodados. Em um primeiro olhar, observando os tempos de execução, percebe-se que em média os melhores processadores obtiveram menores tempos de execução. Analisando os demais campos pode-se perceber como tais tempos foram alcançados.
+
+Analisando o campo task-clock, referente à paralelização, percebe-se que os processadores de gerações mais novas conseguiram paralelizar mais eficientemente os programas, distribuindo a execução em mais CPUs durante o processo.
+
+Já o campo de ciclos junto ao de instruções deu credibilidade ao benchmark uma vez que teve maiores velocidades e instruções executadas por ciclo, atribuidos à máquinas com processamentos mais velozes como visto nas especificações de cada máquina.
+
+Por fim, pode-se também verificar a credibilidade do benchmark ao analisar as três máquinas com o mesmo hardware (as que possuem o começo IC) e verificar que todas possuiram todos os campos muito semelhantes e em alguns momentos até iguais, mostrando também que o benchmark é pouco afetado por outros processos executados na máquina (algo que se mostraria na comparação entre as máquinas de mesmo hardware).
