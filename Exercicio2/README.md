@@ -1,3 +1,2 @@
-# MC723
-Nome: Caio Vinícius Piologo Véras Fernandes
-RA: 145574
+#Nome: Caio Vinícius Piologo Véras Fernandes 145574
+##Exercicio 2: Configuração de Cache
