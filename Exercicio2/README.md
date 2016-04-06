@@ -71,3 +71,5 @@ Porém, o tamanho do bloco é tão importante quanto o tamanho da cache para ava
 | Demand Misses 128b  |631234	      |528728	             |102506	     |68714	       |33792	       |0|
 | Demand Misses 512b  |1066854	    |674611	             |392243	     |219369	     |172874	     |0|
 ---
+######Conclusões para o tamanho do bloco cache
+Percebe-se um comportamento diferente ao aumentar o tamanho do bloco das caches L1 e L2 em relação a aumentar o tamanho total da cache. Para o tamanho avaliado, as caches L1 e L2 diminuiram o número de misses até 128b e em um ponto entre 128b e 512b alcançaram o melhor desempenho e então começaram a subir o número de misses de forma abrupta. concluindo que para um tamanho de cache haverá um tamanho de bloco ideal.
