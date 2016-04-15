@@ -67,3 +67,12 @@ Retirando os seguintes dados:
 - INSTRUCTIONS : 539993292
 - CPI : 1878273199
 
+###### gsm coder
+
+Por fim, foi executado o último benchmark com o seguinte comando:
+
+../../../../mips.x --load=bin/toast -fps -c data/large.au > output_large.encode.gsm
+
+Obtendo os seguintes dados:
+- INSTRUCTIONS : 1484477202
+- CPI : 565405804
