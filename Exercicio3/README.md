@@ -33,9 +33,26 @@ DBG: @@@ end behavior @@@
 
 Mostrando que as funções de soma foram chamadas durante a execução do programa.
 
+Aprofundando-se um pouco mais na teoria, podemos descobrir que as operações aritméticas de soma não costumam usar a instrução add(soma com sinal), mas sim a addu (soma sem sinais). Isso acontece pois caso ocorra um overflow na operação com sinal, um erro será gerado e a política em C é a que o programador deva cuidar do erro, caso esse erro não seja tratado será então utilizada a soma sem sinal.
+
 ##Avaliando Desempenho
-Em seguida serão executados alguns benchmarks procurando avaliar o CPI médio de cada um através do número de instruções. Para isso o acsim será executado com uma flag -s que mostra o número de instruções de cada etapa do código.
+Em seguida serão executados alguns benchmarks procurando avaliar o CPI médio de cada um através do número de instruções. Para isso o acsim será executado com uma flag -s que mostra o número de instruções de cada etapa do código (acsim mips.ac -abi -s).
+
+Para o calculo do CPI (ciclos por instrução) médio do benchmark a tabela seguinte foi utilizada
+
+| Categoria                  | CPI médio     |
+| -------------              |:-------------:|
+| Acesso à memória           | 10            |
+| Controle (branch/jump)     | 3             |
+| Outras                     | 1             |
 
 ######jpeg coder
-O benchmark acima foi executado e teve a seguinte saída:
+O benchmark acima foi executado com o seguinte comando
 
+../../../../mips.x --load=jpeg-6a/cjpeg -dct int -progressive -opt -outfile output_small_encode.jpeg input_small.ppm 
+
+para obter os dados referentes à imagem menor (small)
+
+Disso, foi retirado as seguintes informações:
+- INSTRUCTIONS : 29857500
+- CPI:
