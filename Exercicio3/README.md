@@ -38,7 +38,7 @@ Aprofundando-se um pouco mais na teoria, podemos descobrir que as operações ar
 ##Avaliando Desempenho
 Em seguida serão executados alguns benchmarks procurando avaliar o CPI médio de cada um através do número de instruções. Para isso o acsim será executado com uma flag -s que mostra o número de instruções de cada etapa do código (acsim mips.ac -abi -s).
 
-Para o calculo do CPI (ciclos por instrução) médio do benchmark a tabela seguinte foi utilizada
+Para o cálculo do CPI (ciclos por instrução) médio do benchmark a tabela seguinte foi utilizada:
 
 | Categoria                  | CPI médio     |
 | -------------              |:-------------:|
@@ -51,8 +51,19 @@ O benchmark acima foi executado com o seguinte comando
 
 ../../../../mips.x --load=jpeg-6a/cjpeg -dct int -progressive -opt -outfile output_small_encode.jpeg input_small.ppm 
 
-para obter os dados referentes à imagem menor (small)
+para obter os dados referentes à execução do runme_small.sh
 
 Disso, foi retirado as seguintes informações:
 - INSTRUCTIONS : 29857500
-- CPI:
+- CPI : 125750804
+
+###### fft
+
+Da mesma forma, o benchmark acima foi executado com o comando
+
+../../../../mips.x --load=fft 4 4096 > output_small.txt
+
+Retirando os seguintes dados:
+- INSTRUCTIONS : 539993292
+- CPI : 1878273199
+
