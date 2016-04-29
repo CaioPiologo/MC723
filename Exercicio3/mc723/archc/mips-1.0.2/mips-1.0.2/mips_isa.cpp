@@ -311,7 +311,7 @@ void ac_behavior( add )
 {
   dbg_printf("add r%d, r%d, r%d\n", rd, rs, rt);
   RB[rd] = RB[rs] + RB[rt];
-  addOps++;
+	addOps++;
   dbg_printf("Result = %#x\n", RB[rd]);
   //Test overflow
   if ( ((RB[rs] & 0x80000000) == (RB[rd] & 0x80000000)) &&
