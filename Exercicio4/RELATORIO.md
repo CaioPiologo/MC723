@@ -26,9 +26,53 @@ Por fim, o código foi paralelisado de forma a funcionar com dois processadores,
 
 O programa foi inicialmente feito realizando leituras à partir da entrada padrão e realizando a soma para estudar como os processadores lidam com as regiões de memória e ponteiros, concluindo que ele pode instanciar um vetor em apenas um processador, ou seja localmente, e tornar o ponteiro para o mesmo global enquanto outras variáveis locais precisam ter versões globais caso sejam instanciadas em apenas um processador e então atualizadas.
 
-Assim, para fins de análise, o programa foi modificado de forma a gerar um vetor com 1000000 (um milhão) de elementos 
+Assim, para fins de análise, o programa foi modificado de forma a gerar um vetor com 1000000 (um milhão) de elementos, todos iguais a 1 e somá-los. Em seguida foi criada uma constante que define o número de processadores que serão executados para facilitar os testes e obter um resultado mais consiso (executando o mesmo overhead nos dois casos de número de processadores), de forma que esta constante seria verificadas pelos processadores ao iniciarem a execução do programa e caso o seu id seja maior ou igual a esta constante ele termina a sua execução e o programa se adapta para calcular a soma de todos os elementos do vetor.
 
+######Resultados e Conclusões
+Executando o programa com dois processadores foi obtida a seguinte saída do simulador:
 
+ArchC: -------------------- Simulation Finished --------------------
 
+Soma total = 1000000
 
+ArchC: -------------------- Simulation Finished --------------------
 
+Info: /OSCI/SystemC: Simulation stopped by user.
+
+ArchC: Simulation statistics
+
+    Times: 0.69 user, 0.00 system, 0.71 real
+    Number of instructions executed: 6005538
+    Simulation speed: 8703.68 K instr/s
+ArchC: Simulation statistics
+
+    Times: 0.69 user, 0.00 system, 0.71 real
+    Number of instructions executed: 6000644
+    Simulation speed: 8696.58 K instr/s
+
+Pode-se verificar pela saída que o número de instruções executadas foram 6005538 (o maior número de intruções executadas dentre os dois processadores)
+E executando o mesmo programa, porém com a constante descrita modificada para 1, foi obtido o seguinte resultado:
+
+ArchC: -------------------- Simulation Finished -------------------- 
+
+Soma total = 1000000
+
+ArchC: -------------------- Simulation Finished -------------------- 
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+
+ArchC: Simulation statistics
+
+    Times: 0.80 user, 0.00 system, 0.80 real
+    Number of instructions executed: 9005522
+    Simulation speed: 11256.90 K instr/s
+ArchC: Simulation statistics
+
+    Times: 0.80 user, 0.00 system, 0.80 real
+    Number of instructions executed: 4000613
+    Simulation speed: 5000.77 K instr/s
+
+E, da mesma forma, verifica-se que o número de instruções executadas foram de 9005522, uma vez que o  segundo processador terminou a sua execução no começo do programa.
+
+Dessa forma, pode-se concluir que a execução do programa foi feita em um número menor de instruções quando dual core, o que significaria um tempo de execução menor em, no caso quase um terço do programa single core a menos. 
+Vale ressaltar também que a otimização feita deveria, em tese, ser executada em metade das instruções. Porém, devido à necessidade de várias instruções sequênciais para inicializar o vetor e exibir a saída, sobram um número diferente de instruções a serem paralelisadas.
